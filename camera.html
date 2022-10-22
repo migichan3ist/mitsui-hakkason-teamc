@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>育てる</title>    
+</head>
+<body>
+    <h1>育てる</h1>
+    <h2>カメラ</h2>
+    <div>
+        <video id="video"></video>
+    </div> 
+    <button id="move_money">金額入力画面に移動</button>
+    <script>
+        const video = document.getElementById("video")
+        navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false,
+        }).then(stream => {
+            video.srcObject = stream;
+            video.play()
+        }).catch(e => {
+        console.log(e)
+        })
+    </script> 
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="js/camera.js"></script>  
+    <!-- <button onclick="location.href='./index.html'">予約完了</button> -->
+</body>
+</html>

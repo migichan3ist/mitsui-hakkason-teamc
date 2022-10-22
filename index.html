@@ -1,0 +1,27 @@
+<html lang="ja">
+<head>
+    <title>マイページ</title>
+    <script>
+    window.onload = function() {
+
+        const url = new URL(window.location.href);
+        const params = url.searchParams;
+        const userName = params.get("username");
+        // IDを使ってspan要素を取得する
+        const recieveUserName = document.getElementById("recieveUserName");
+        // 取得したspan要素に受け取ったパラメータを代入
+        recieveUserName.innerText = userName;
+    }
+    </script>
+</head>
+<body>
+    <h1>マイページ</h1>
+    こんにちは、 <span id="recieveUserName"></span> さん！
+    <button id="move_camera">育てる</button>
+    <button id="move_bet">賭ける</button>
+    <button id="move_conform">結果</button>
+    
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="js/index.js"></script>  
+</body>
+</html>
