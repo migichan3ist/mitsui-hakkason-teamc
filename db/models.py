@@ -9,3 +9,10 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String)
     count = Column(Integer())
+    speed = Column(Integer())
+
+class HourTable(Base):
+    __tablename__ = 'hourtable'
+    id = Column(Integer, primary_key=True, index=True)
+    starttime = Column(Integer())
+    remain = Column(Integer())

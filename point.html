@@ -5,16 +5,22 @@
         window.onload = function() {
             const url = new URL(window.location.href);
             const params = url.searchParams;
-            const userName = params.get("count");
+            const userCount = params.get("count");
+            const increaseMoney = params.get("increasemoney");
             // IDを使ってspan要素を取得する
             const recieveUserCount = document.getElementById("recieveUserCount");
             // 取得したspan要素に受け取ったパラメータを代入
-            recieveUserCount.innerText = userName;
+            recieveUserCount.innerText = userCount;
+            // IDを使ってspan要素を取得する
+            const recieveIncreaseMoney = document.getElementById("recieveIncreaseMoney");
+            // 取得したspan要素に受け取ったパラメータを代入
+            recieveIncreaseMoney.innerText = increaseMoney;
         }
     </script>
 </head>
 <body>
     <h1>現在<span id="recieveUserCount"></span>ポイント</h1>
+    <div><span id="recieveIncreaseMoney"></span>ポイント増えました！</div>
     <p>体力</p><input type="number">
     <p>速さ</p><input type="number">
     <p>技術</p><input type="number">

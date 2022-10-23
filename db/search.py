@@ -11,3 +11,7 @@ def users_check(db: Session,userId):
 
 def users_count(db: Session,userId):
     return db.query(models.User.count).filter(models.User.id == userId).first().count
+
+# hourtableが空が田舎
+def hourtable_table(db: Session):
+    return db.query(models.HourTable).all()

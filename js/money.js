@@ -1,19 +1,15 @@
-function callAiueo(result){
+function successMoney(result,increaseMoney){
     console.log(result);
+    location.href = "./point.html?id=" + result.id + "&count=" + result.count + "&increasemoney=" + increaseMoney;
 }
 
-function successMoney(result){
-    console.log(result);
-    location.href = "./point.html?id=" + result.id + "&count=" +result.count;
-}
-
-async function callMoneyApi(url) {
+async function callMoneyApi(url,increaseMoney) {
     console.log(url);
     fetch(url, {
         mode: 'cors'
     }).then(response => response.json())
       .then(result => {
-        successMoney(result);
+        successMoney(result,increaseMoney);
     });
 };
 
@@ -22,7 +18,8 @@ document.getElementById("money").onclick = function() {
     const params = locationUrl.searchParams;
     const userId = params.get("id");
     let registerNumMoney = document.getElementById('num_money').value;
+    let increaseMoney = Math.floor(registerNumMoney / 100);
     console.log(registerNumMoney);
     const url = 'http://127.0.0.1:8000/register_point/' + userId + '/' +registerNumMoney;
-    callMoneyApi(url);
+    callMoneyApi(url,increaseMoney);
 };

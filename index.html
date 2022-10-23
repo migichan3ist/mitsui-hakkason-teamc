@@ -2,16 +2,29 @@
 <head>
     <title>マイページ</title>
     <script>
-    window.onload = function() {
+        function successUserName(result){
+            // IDを使ってspan要素を取得する
+            const recieveUserName = document.getElementById("recieveUserName");
+            // 取得したspan要素に受け取ったパラメータを代入
+            recieveUserName.innerText = result.username;
+        }
 
-        const url = new URL(window.location.href);
-        const params = url.searchParams;
-        const userName = params.get("username");
-        // IDを使ってspan要素を取得する
-        const recieveUserName = document.getElementById("recieveUserName");
-        // 取得したspan要素に受け取ったパラメータを代入
-        recieveUserName.innerText = userName;
-    }
+        async function callUserNameApi(url) {
+            console.log(url);
+            fetch(url, {
+                mode: 'cors'
+            }).then(response => response.json())
+            .then(result => {
+                successUserName(result);
+            });
+        };
+        window.onload = function() {
+            const nowUrl = new URL(window.location.href);
+            const params = nowUrl.searchParams;
+            const userid = params.get("id");
+            const url = 'http://127.0.0.1:8000/users_search_for_id/' + userid;
+            callUserNameApi(url);
+        }
     </script>
 </head>
 <body>

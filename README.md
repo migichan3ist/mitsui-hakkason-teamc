@@ -36,3 +36,10 @@ URL : http://127.0.0.1:8000
 pip install sqlalchemy
 pip install pysqlite3
 ```
+
+## 注意点
+
+### 一番最初に必ず以下のURLをブラウザで打ち込む
+
+http://127.0.0.1:8000/hour_table
+

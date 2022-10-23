@@ -4,3 +4,5 @@ document.getElementById("move_index").onclick = function() {
     const userId = params.get("id");
     location.href = "./index.html?id=" + userId;
 };
+
+// 速さを増加させる機能はほしい

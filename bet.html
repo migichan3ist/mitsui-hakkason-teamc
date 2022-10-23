@@ -1,9 +1,37 @@
 <html>
 <head>
     <title>賭ける</title>    
+    <script>
+        function successHourTable(result){
+            console.log("あいうえお");
+            for (let hourInfo=0; hourInfo < result.length ; hourInfo++) {
+                start_time = result[hourInfo].starttime;
+                end_time = result[hourInfo].starttime + 1;
+                remain = result[hourInfo].remain;
+                console.log('start_time:' + start_time + 'end_time:' + end_time + "remain:" + remain);
+            }
+        }
+
+        async function callHourTableApi(url) {
+            console.log(url);
+            fetch(url, {
+                mode: 'cors'
+            }).then(response => response.json())
+            .then(result => {
+                successHourTable(result);
+            });
+        };
+        window.onload = function() {
+            const url = 'http://127.0.0.1:8000/hour_table';
+            callHourTableApi(url);
+        }
+    </script>
 </head>
 <body>
     <h1>賭ける</h1>
+    <div>時間帯を選択してください</div>
+    <div id="time_table">
+    </div>
     <button onclick="location.href='./index.html'">予約完了</button>
 </body>
 </html>
