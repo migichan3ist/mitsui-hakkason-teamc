@@ -136,6 +136,26 @@ h1 {
   border-bottom: dotted 5px #f1c40f; /*線の種類　ドットの大きさ　色*/
  }
 
+/* #resultsTable{
+  } */
+
+table {
+  border: 1px solid #eccc68;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-radius: 6px;
+
+}
+
+th{
+  background-color: #eccc68;
+  border: 1px solid #eccc68;
+}
+table th{
+  border: 1px solid #eccc68;
+}
+
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
