@@ -1,0 +1,112 @@
+#login{
+  font-size: 130%;
+  width: 130px;
+  height:39px ;
+  /* padding: 10px 30px; */
+  display: inline-block;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+#username{
+  width: 200px;
+  height:35px ;
+  /* padding: 10px 30px; */
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.index{
+  font-size: 140%;
+  width: 140px;
+  height:42px ;
+  /* padding: 10px 30px; */
+  display: inline-block;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+#move_money{
+  font-size: 140%;
+  width: 250px;
+  height:42px ;
+  /* padding: 10px 30px; */
+  display: inline-block;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;  
+  color: #fff;
+  background: #f1c40f;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+}
+
+#num_money{
+  font-size: 200%;
+  width: 180px;
+  height:50px ;
+  /* padding: 10px 30px; */
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  transform: scale(-1, -1);
+}
+
+#money{
+  font-size: 120%;
+  width: 80px;
+  height:35px;
+  /* padding: 10px 30px; */
+  display: inline-block;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: #d35400;
+  transform: translate(50px);
+}
+
+#border{
+  border-bottom: dotted 3px #b8e994;
+}
+
+.point_box{
+  font-size: 200%;
+  width: 160px;
+  height:40px ;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.point_moji{
+  font-size: 23px;
+}
+
+
+#move_index{
+  font-size: 130%;
+  width: 130px;
+  height:39px ;
+  /* padding: 10px 30px; */
+  display: inline-block;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transform: translate(15px);
+}
+
+#recieveIncreaseMoney{
+  font-size: 30px;
+}
+
+h1 { 
+  color: #2980b9;
+  border-bottom: dotted 5px #f1c40f; /*線の種類　ドットの大きさ　色*/
+ }

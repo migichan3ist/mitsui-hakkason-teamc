@@ -1,6 +1,7 @@
 <html>
 <head>
-    <title>ポイント</title>    
+    <title>ポイント</title>   
+    <link rel="stylesheet" href="stylesheet.css" type="text/css" /> 
     <script>
         window.onload = function() {
             const url = new URL(window.location.href);
@@ -16,20 +17,23 @@
             const recieveIncreaseMoney = document.getElementById("recieveIncreaseMoney");
             // 取得したspan要素に受け取ったパラメータを代入
             recieveIncreaseMoney.innerText = increaseMoney;
-
             document.getElementById("num_speed").value = userSpeed;
         }
     </script>
 </head>
 <body>
     <h1>現在<span id="recieveUserCount"></span>ポイント</h1>
-    <div><span id="recieveIncreaseMoney"></span>ポイント増えました！</div>
-    <p>体力</p><input type="number" value=10>
-    <p>速さ</p><input id="num_speed" type="text">
-    <p>技術</p><input type="number"value=10>
+    <p id="border" style="font-size: 20px;"><span id="recieveIncreaseMoney"></span>ポイント増えました！</p>
+    <p class="point_moji" style="color: #fff; background: #55efc4">体力</p>
+    <input type="number" class="point_box" value=10>
+    <p class="point_moji" style="color: #fff; background: #74b9ff">速さ</p>
+    <input type="number" class="point_box" id="num_speed" type="text">
+    <p class="point_moji" style="color: #fff; background: #a29bfe">技術</p>
+    <input type="number" class="point_box" value=10>
+    <br>
     <br>
     <button id="move_index">OK</button>
     <script src="https://code.jquery.com/jquery.min.js"></script>
-    <script src="js/point.js"></script>  
+    <script src="js/point.js"></script>
 </body>
 </html>
