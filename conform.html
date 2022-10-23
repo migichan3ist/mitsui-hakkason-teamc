@@ -2,11 +2,23 @@
 <head>
     <title>結果ページ</title> 
     <script>
+        function makeTable(res){
+            // res = [1,3,7,4] //のようなリスト型で
+            console.log(res);
+            num_data = res.length;
+            let tableHtml = "";
+            tableHtml += "<table border='1'><tr><th>順位</th></tr>";
+            if (num_data > 0){
+                for (let i = num_data - 1; i>=0; i--){
+                    console.log(res[i]);
+                    tableHtml += "<tr><td>" + res[i].rank + "</td></tr>";
+                }
+            }
+            tableHtml += "</table>";
+            document.querySelector('#resultsTable').innerHTML = tableHtml
+        }
         function successUserRank(result){
-            // IDを使ってspan要素を取得する
-            const recieveUserName = document.getElementById("recieveUserName");
-            // 取得したspan要素に受け取ったパラメータを代入
-            recieveUserName.innerText = result.username;
+            makeTable(result);
         }
 
         async function callUserRank(url) {
@@ -27,43 +39,9 @@
         }
     </script>   
 </head>
-<body onload="getResults()">
+<body>
     <h1>結果ページ</h1>
     <div id="resultsTable"></div>
     <button onclick="location.href='./index.html'">閉じる</button>
-
-<script>
-function getResults(){
-    let res;
-    fetch("https://") // powerを取得する先を指定
-    .then(response => {
-        res = response.json();
-        makeTable(res);
-    })
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => {
-        console.log("失敗しました");
-    });
-    console.log("OK") 
-}
-
-function makeTable(res){
-    // res = [1,3,7,4] //のようなリスト型で
-    num_data = res.length;
-    let tableHtml = "";
-    tableHtml += "<table border='1'><tr><th>順位</th></tr>";
-    if (num_data > 0){
-        for (let i=0; i<num_data; i++){
-            tableHtml += "<tr><td>" + res[i] + "</td></tr>";
-        }
-    }
-    tableHtml += "</table>";
-    document.querySelector('#resultsTable').innerHTML = tableHtml
-}
-    
-</script>
-
 </body>
 </html>
