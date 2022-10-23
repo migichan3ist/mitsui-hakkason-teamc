@@ -237,7 +237,7 @@ async function callsendLank(url) {
 
 function sendData(target_rank){
     const userId = document.getElementById("speed").value;
-    const url = 'http://127.0.0.1:8000/register_point/' + userId + '/' + target_rank;
+    const url = 'http://127.0.0.1:8000/users_create_rank/' + userId + '/' + target_rank;
     callsendLank(url);
 }
 </script>
