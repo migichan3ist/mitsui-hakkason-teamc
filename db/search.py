@@ -19,3 +19,7 @@ def hourtable_table(db: Session):
 # speed検索
 def users_speed(db: Session,userId):
     return db.query(models.User.speed).filter(models.User.id == userId).first().speed
+
+# speed検索
+def users_rank(db: Session,userId):
+    return db.query(models.UserRank).filter(models.User.id == userId).all()

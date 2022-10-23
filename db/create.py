@@ -11,6 +11,14 @@ def create_user(db: Session, username ,count, speed):
     db.refresh(db_user)
     return db_user
 
+def create_userrank(db: Session, usernameid ,rank):
+    # fake_hashed_password = user.password + "notreallyhashed"
+    db_user = models.UserRank(usernameid=usernameid ,rank=rank)
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return db_user
+
 def create_hourtable(db: Session, starttime ,remain):
     # fake_hashed_password = user.password + "notreallyhashed"
     db_hourtable = models.HourTable(starttime=starttime , remain=remain)

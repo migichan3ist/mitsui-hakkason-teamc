@@ -16,3 +16,9 @@ class HourTable(Base):
     id = Column(Integer, primary_key=True, index=True)
     starttime = Column(Integer())
     remain = Column(Integer())
+
+class UserRank(Base):
+    __tablename__ = 'userranks'
+    id = Column(Integer, primary_key=True, index=True)
+    usernameid = Column(Integer)
+    rank = Column(Integer())

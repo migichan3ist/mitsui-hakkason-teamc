@@ -61,7 +61,7 @@ def create_user(username: str,db: Session = Depends(get_db)):
     result = create.create_user(db=db, username=username,count=count,speed=speed)
     print("ユーザー登録完了")
     return result
-
+    
 # ユーザーのcount変更
 @app.get("/register_point/{userId}/{userMoney}")
 def user_create(userId: int, userMoney: int, db: Session = Depends(get_db)):
@@ -113,5 +113,20 @@ def increase_speed(userId: int, increaseSpeed: int, db: Session = Depends(get_db
 @app.get("/search_speed/{userId}")
 def increase_speed(userId: int, db: Session = Depends(get_db)):
     now_speed = search.users_speed(db=db, userId=userId)
+    print("speeed取得")
+    return now_speed
+
+# ユーザーランキング
+@app.get("/users_create_rank/{usernameid}/{rank}")
+def create_user_rank(usernameid: int,rank: int,db: Session = Depends(get_db)):
+    print(usernameid)
+    result = create.create_userrank(db=db, usernameid=usernameid,rank=rank)
+    print("ユーザー登録完了")
+    return result
+
+# rankを取得
+@app.get("/search_user_rank/{userId}")
+def search_user_rank(userId: int, db: Session = Depends(get_db)):
+    now_speed = search.users_rank(db=db, userId=userId)
     print("speeed取得")
     return now_speed
