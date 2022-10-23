@@ -1,8 +1,23 @@
-document.getElementById("move_index").onclick = function() {
-    const url = new URL(window.location.href);
-    const params = url.searchParams;
-    const userId = params.get("id");
+function successPoint(userId){
     location.href = "./index.html?id=" + userId;
+}
+
+async function callPontApi(url,userId) {
+    console.log(url);
+    fetch(url, {
+        mode: 'cors'
+    }).then(response => response.json())
+      .then(result => {
+        successPoint(userId);
+    });
 };
 
-// 速さを増加させる機能はほしい
+document.getElementById("move_index").onclick = function() {
+    const locationUrl = new URL(window.location.href);
+    const params = locationUrl.searchParams;
+    const userId = params.get("id");
+    let increaseSpeed = document.getElementById('num_speed').value;
+    console.log(increaseSpeed);
+    const url = 'http://127.0.0.1:8000/increase_speed/' + userId + '/' + increaseSpeed;
+    callPontApi(url,userId);
+};

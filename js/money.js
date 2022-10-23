@@ -1,6 +1,6 @@
 function successMoney(result,increaseMoney){
     console.log(result);
-    location.href = "./point.html?id=" + result.id + "&count=" + result.count + "&increasemoney=" + increaseMoney;
+    location.href = "./point.html?id=" + result.id + "&count=" + result.count + "&increasemoney=" + increaseMoney + "&userspeed=" + result.speed;
 }
 
 async function callMoneyApi(url,increaseMoney) {

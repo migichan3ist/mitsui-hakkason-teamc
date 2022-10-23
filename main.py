@@ -93,3 +93,25 @@ def search_hourtable_table(db: Session = Depends(get_db)):
 @app.get("/catch_hour_table")
 def search_hourtable_table(db: Session = Depends(get_db)):
     return search.hourtable_table(db=db)
+
+# speedを増加させる
+@app.get("/increase_speed/{userId}/{increaseSpeed}")
+def increase_speed(userId: int, increaseSpeed: int, db: Session = Depends(get_db)):
+    # 現在の来場回数を取得
+    print("ユーザーのspeed変更")
+    # now_speed = search.users_speed(db=db, userId=userId)
+    speed = increaseSpeed
+    # speedの更新
+    update.users_speed_update(db=db, userId=userId,speed=speed)
+     # 更新後のユーザー情報取得
+    result = search.users_check(db=db, userId=userId)
+    print(result.speed)
+    print("ユーザー登録完了")
+    return result
+
+# speedを取得
+@app.get("/search_speed/{userId}")
+def increase_speed(userId: int, db: Session = Depends(get_db)):
+    now_speed = search.users_speed(db=db, userId=userId)
+    print("speeed取得")
+    return now_speed

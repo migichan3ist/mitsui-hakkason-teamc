@@ -15,3 +15,7 @@ def users_count(db: Session,userId):
 # hourtableが空が田舎
 def hourtable_table(db: Session):
     return db.query(models.HourTable).all()
+
+# speed検索
+def users_speed(db: Session,userId):
+    return db.query(models.User.speed).filter(models.User.id == userId).first().speed

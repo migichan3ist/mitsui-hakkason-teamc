@@ -7,6 +7,7 @@
             const params = url.searchParams;
             const userCount = params.get("count");
             const increaseMoney = params.get("increasemoney");
+            const userSpeed = params.get("userspeed");
             // IDを使ってspan要素を取得する
             const recieveUserCount = document.getElementById("recieveUserCount");
             // 取得したspan要素に受け取ったパラメータを代入
@@ -15,15 +16,17 @@
             const recieveIncreaseMoney = document.getElementById("recieveIncreaseMoney");
             // 取得したspan要素に受け取ったパラメータを代入
             recieveIncreaseMoney.innerText = increaseMoney;
+
+            document.getElementById("num_speed").value = userSpeed;
         }
     </script>
 </head>
 <body>
     <h1>現在<span id="recieveUserCount"></span>ポイント</h1>
     <div><span id="recieveIncreaseMoney"></span>ポイント増えました！</div>
-    <p>体力</p><input type="number">
-    <p>速さ</p><input type="number">
-    <p>技術</p><input type="number">
+    <p>体力</p><input type="number" value=10>
+    <p>速さ</p><input id="num_speed" type="text">
+    <p>技術</p><input type="number"value=10>
     <br>
     <button id="move_index">OK</button>
     <script src="https://code.jquery.com/jquery.min.js"></script>
