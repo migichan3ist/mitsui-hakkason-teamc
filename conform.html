@@ -1,9 +1,69 @@
 <html>
 <head>
-    <title>結果ページ</title>    
+    <title>結果ページ</title> 
+    <script>
+        function successUserRank(result){
+            // IDを使ってspan要素を取得する
+            const recieveUserName = document.getElementById("recieveUserName");
+            // 取得したspan要素に受け取ったパラメータを代入
+            recieveUserName.innerText = result.username;
+        }
+
+        async function callUserRank(url) {
+            console.log(url);
+            fetch(url, {
+                mode: 'cors'
+            }).then(response => response.json())
+            .then(result => {
+                successUserRank(result);
+            });
+        };
+        window.onload = function() {
+            const nowUrl = new URL(window.location.href);
+            const params = nowUrl.searchParams;
+            const userid = params.get("id");
+            const url = 'http://127.0.0.1:8000/search_user_rank/' + userid;
+            callUserRank(url);
+        }
+    </script>   
 </head>
-<body>
+<body onload="getResults()">
     <h1>結果ページ</h1>
+    <div id="resultsTable"></div>
     <button onclick="location.href='./index.html'">閉じる</button>
+
+<script>
+function getResults(){
+    let res;
+    fetch("https://") // powerを取得する先を指定
+    .then(response => {
+        res = response.json();
+        makeTable(res);
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.log("失敗しました");
+    });
+    console.log("OK") 
+}
+
+function makeTable(res){
+    // res = [1,3,7,4] //のようなリスト型で
+    num_data = res.length;
+    let tableHtml = "";
+    tableHtml += "<table border='1'><tr><th>順位</th></tr>";
+    if (num_data > 0){
+        for (let i=0; i<num_data; i++){
+            tableHtml += "<tr><td>" + res[i] + "</td></tr>";
+        }
+    }
+    tableHtml += "</table>";
+    document.querySelector('#resultsTable').innerHTML = tableHtml
+}
+    
+</script>
+
 </body>
 </html>

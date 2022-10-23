@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<style>
+#back {
+  position: absolute;
+  left: 0px;
+  top: 50px;
+  z-index: 0;
+}
+#animate1 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 30px;
+  top: 80px;
+  z-index: 99;
+}
+#animate2 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 30px;
+  top: 160px;
+  z-index: 99;
+}
+#animate3 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 30px;
+  top: 240px;
+  z-index: 99;
+}
+#animate4 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 30px;
+  top: 320px;
+  z-index: 99;
+}
+#animate5 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 30px;
+  top: 400px;
+  z-index: 99;
+}
+#animate6 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 30px;
+  top: 480px;
+  z-index: 99;
+}
+#animate7 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 30px;
+  top: 560px;
+  z-index: 99;
+}
+</style>
+
+<head>    
+    <script>
+    function successCallUserList(result){
+        console.log(result[result.length - 1].speed);
+        // IDを使ってspan要素を取得する
+        let speedValue = result[result.length - 1].speed;
+        // デバック用
+        const userId = result[result.length - 1].id;
+        // 取得したspan要素に受け取ったパラメータを代入
+        document.getElementById("speed").value = speedValue;
+        // ユーザー情報も埋め込む
+        document.getElementById("userid").value = userId;
+    }
+
+    async function callUserList(url) {
+        console.log(url);
+        fetch(url, {
+            mode: 'cors'
+        }).then(response => response.json())
+        .then(result => {
+            successCallUserList(result);
+        });
+    };
+    window.onload = function() {
+        const url = 'http://127.0.0.1:8000/all_users_check/';
+        callUserList(url);
+    }
+    </script>
+</head>
+
+<p><button onclick="myMove()">Start</button></p> 
+<input type="hidden" id="speed" name="speed">
+<input type="hidden" id="userid" name="userid">
+
+<div id ="container">
+    <img src="./img/back.png" id = "back" width="1370">
+    <div id ="animate">
+        <div id ="animate1">
+            <img src="./img/1.png" height="120">
+        </div>
+        <div id ="animate2">
+            <img src="./img/2.png" height="120">
+        </div>
+        <div id ="animate3">
+            <img src="./img/3.png" height="120">
+        </div>
+        <div id ="animate4">
+            <img src="./img/4.png" height="120">
+        </div>
+        <div id ="animate5">
+            <img src="./img/5.png" height="120">
+        </div>
+        <div id ="animate6">
+            <img src="./img/6.png" height="120">
+        </div>
+        <div id ="animate7">
+            <img src="./img/7.png" height="120">
+        </div>
+    </div>
+</div>
+
+<script>
+
+let input_power = 0;
+
+function myMove() {
+    const power = getPower();
+    let id = null;
+    const elem1 = document.getElementById("animate1"); 
+    const elem2 = document.getElementById("animate2"); 
+    const elem3 = document.getElementById("animate3"); 
+    const elem4 = document.getElementById("animate4"); 
+    const elem5 = document.getElementById("animate5"); 
+    const elem6 = document.getElementById("animate6"); 
+    const elem7 = document.getElementById("animate7"); 
+    let pos = [0,0,0,0,0,0,0];
+    let min_pos = 0
+    clearInterval(id);
+    id = setInterval(frame, 1);
+    function frame() {
+        if (min_pos == 1100) {
+        clearInterval(id);
+        } else {
+            if (pos[0] < 1100){
+                pos[0] += power["Entry1"];
+                elem1.style.left = pos[0] + "px"; 
+            }
+            if (pos[1] < 1100){
+                pos[1] += power["Entry2"];
+                elem2.style.left = pos[1] + "px"; 
+            }
+            if (pos[2] < 1100){
+                pos[2] += power["Entry3"];
+                elem3.style.left = pos[2] + "px"; 
+            }
+            if (pos[3] < 1100){
+                pos[3] += power["Entry4"];
+                elem4.style.left = pos[3] + "px"; 
+            }
+            if (pos[4] < 1100){
+                pos[4] += power["Entry5"];
+                elem5.style.left = pos[4] + "px"; 
+            }
+            if (pos[5] < 1100){
+                pos[5] += power["Entry6"];
+                elem6.style.left = pos[5] + "px"; 
+            }
+            if (pos[6] < 1100){
+                pos[6] += power["Entry7"];
+                elem7.style.left = pos[6] + "px"; 
+            }
+            min_pos = pos.reduce((p, c) => {
+                return min(p, c)
+            })
+        }
+    }
+    const rank = getRank(power);
+    console.log(rank);
+    const target_rank = rank.indexOf("Entry1") + 1;
+    console.log(target_rank);
+    sendData(target_rank);
+}
+
+function min(a, b) {
+    return a > b ? b : a;
+}
+
+function getPower(){
+    
+    // ユーザーのスピードを表示する
+    let power = {"Entry1":1.0,"Entry2":1.2,"Entry3":1.05,"Entry4":1.1,"Entry5":0.95,"Entry6":1.15,"Entry7":1.02};
+    
+    // スピード表示
+    // power["Entry1"] = Number(getParam('sped1'));
+    console.log("Entry1 : " + power["Entry1"]);
+    console.log(document.getElementById("speed").value);
+    power["Entry1"] = Number(document.getElementById("speed").value);
+    console.log("Entry1 : " + power["Entry1"]);
+    console.log()
+    //
+    return power
+}
+
+function getRank(obj){
+    //キーを含んだ配列に変換 オブジェクト⇒配列
+    var array = Object.keys(obj).map((k)=>({ key: k, value: obj[k] }));
+    //値段順
+    array.sort((a, b) => a.value - b.value);
+    //配列⇒オブジェクト　で元に戻す
+    obj = Object.assign({}, ...array.map((item) => ({
+        [item.key]: item.value,
+    })));
+    rank = Object.keys(obj).reverse();
+    return rank;
+}
+
+function successcallLank(result){
+    console.log("rank登録完了！");
+}
+
+async function callsendLank(url) {
+    console.log(url);
+    fetch(url, {
+        mode: 'cors'
+    }).then(response => response.json())
+      .then(result => {
+        successcallLank(result);
+    });
+};
+
+function sendData(target_rank){
+    const userId = document.getElementById("speed").value;
+    const url = 'http://127.0.0.1:8000/register_point/' + userId + '/' + target_rank;
+    callsendLank(url);
+}
+</script>
+
+</body>
+</html>
