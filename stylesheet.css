@@ -58,6 +58,16 @@
   transform: scale(-1, -1);
 }
 
+#copy{
+  font-size: 200%;
+  width: 180px;
+  height:50px ;
+  /* padding: 10px 30px; */
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 #money{
   font-size: 120%;
   width: 80px;
@@ -100,13 +110,40 @@
   border: none;
   cursor: pointer;
   transform: translate(15px);
+  color: #fff;
+  background: #ff6b81;
 }
 
 #recieveIncreaseMoney{
-  font-size: 30px;
+  size: 30px;
+}
+
+#cnform_close{
+  font-size: 130%;
+  width: 130px;
+  height:39px ;
+  /* padding: 10px 30px; */
+  display: inline-block;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: #f39c12;
 }
 
 h1 { 
   color: #2980b9;
   border-bottom: dotted 5px #f1c40f; /*線の種類　ドットの大きさ　色*/
  }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

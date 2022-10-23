@@ -1,14 +1,19 @@
 <html>
 <head>
-    <title>育てる</title>    
+    <title>育てる</title>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css" />        
 </head>
 <body>
     <h1>育てる</h1>
-    <h2>カメラ</h2>
+    <div class="flex">
+        <img src="camera.png" width="50px" height="50px" alt="camera.png" style="margin-top: -15px;">
+        <h2 style="height:50px; color: #34495e;">QRコードを読み込みこんでください</h2>
+    </div>
     <div>
         <div id="loading">📱 ブラウザのカメラの使用を許可してください。</div>
         <canvas id="canvas" hidden></canvas>
     </div> 
+    <p></p>
     <button id="move_money">金額入力画面に移動</button>
     <script>
         // const video = document.getElementById("video")

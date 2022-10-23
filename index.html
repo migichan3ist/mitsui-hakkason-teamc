@@ -1,6 +1,7 @@
 <html lang="ja">
 <head>
     <title>マイページ</title>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css" /> 
     <script>
         function successUserName(result){
             // IDを使ってspan要素を取得する
@@ -29,10 +30,13 @@
 </head>
 <body>
     <h1>マイページ</h1>
-    こんにちは、 <span id="recieveUserName"></span> さん！
-    <button id="move_camera">育てる</button>
-    <button id="move_bet">賭ける</button>
-    <button id="move_conform">結果</button>
+    <p style="font-size: 120%">こんにちは、<span id="recieveUserName"></span>さん！</p>
+    <button id="move_camera" class="index" 
+    style="color: #fff; background: #16a085;">育てる</button>
+    <!-- <button id="move_bet" class="index" 
+    style="color: #fff; background: #d35400;">賭ける</button> -->
+    <button id="move_conform" class="index" 
+    style="color: #fff; background: #bdc3c7;">結果</button>
     
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <script src="js/index.js"></script>  

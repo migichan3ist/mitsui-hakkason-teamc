@@ -1,6 +1,7 @@
 <html>
 <head>
-    <title>結果ページ</title> 
+    <title>結果ページ</title>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css" /> 
     <script>
         function makeTable(res){
             // res = [1,3,7,4] //のようなリスト型で
@@ -16,11 +17,16 @@
             }
             tableHtml += "</table>";
             document.querySelector('#resultsTable').innerHTML = tableHtml
+            let couponHtml = "";
+            couponHtml += "<table border='1'><tr> 10% OFF </tr></table>";
+            console.log(res[num_data - 1].rank);
+            if (res[num_data - 1].rank == 1){
+                document.querySelector('#coupon').innerHTML = couponHtml
+            }
         }
         function successUserRank(result){
             makeTable(result);
         }
-
         async function callUserRank(url) {
             console.log(url);
             fetch(url, {
@@ -37,11 +43,12 @@
             const url = 'http://127.0.0.1:8000/search_user_rank/' + userid;
             callUserRank(url);
         }
-    </script>   
+    </script>
 </head>
 <body>
     <h1>結果ページ</h1>
     <div id="resultsTable"></div>
-    <button onclick="location.href='./index.html'">閉じる</button>
+    <div id="coupon"></div>
+    <button id="cnform_close" onclick="location.href='./index.html'">閉じる</button>
 </body>
 </html>

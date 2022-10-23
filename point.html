@@ -8,7 +8,6 @@
             const params = url.searchParams;
             const userCount = params.get("count");
             const increaseMoney = params.get("increasemoney");
-            const userSpeed = params.get("userspeed");
             // IDを使ってspan要素を取得する
             const recieveUserCount = document.getElementById("recieveUserCount");
             // 取得したspan要素に受け取ったパラメータを代入
@@ -17,19 +16,18 @@
             const recieveIncreaseMoney = document.getElementById("recieveIncreaseMoney");
             // 取得したspan要素に受け取ったパラメータを代入
             recieveIncreaseMoney.innerText = increaseMoney;
-            document.getElementById("num_speed").value = userSpeed;
         }
     </script>
 </head>
 <body>
     <h1>現在<span id="recieveUserCount"></span>ポイント</h1>
-    <p id="border" style="font-size: 20px;"><span id="recieveIncreaseMoney"></span>ポイント増えました！</p>
+    <div><span id="recieveIncreaseMoney"></span><p  id="border" style="font-size: 20px; ">ポイント増えました！</p></div>
     <p class="point_moji" style="color: #fff; background: #55efc4">体力</p>
-    <input type="number" class="point_box" value=10>
+    <input type="number" class="point_box" value="3" readonly>
     <p class="point_moji" style="color: #fff; background: #74b9ff">速さ</p>
-    <input type="number" class="point_box" id="num_speed" type="text">
+    <input type="number" class="point_box" id="num_speed">
     <p class="point_moji" style="color: #fff; background: #a29bfe">技術</p>
-    <input type="number" class="point_box" value=10>
+    <input type="number" class="point_box" value="2" readonly>
     <br>
     <br>
     <button id="move_index">OK</button>
